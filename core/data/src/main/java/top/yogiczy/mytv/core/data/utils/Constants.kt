@@ -30,8 +30,16 @@ object Constants {
     val IPTV_SOURCE_LIST = IptvSourceList(
         listOf(
             IptvSource(
-                name = "默认直播源 iptv-api",
-                url = "https://gitee.com/mytv-android/iptv-api/raw/master/output/result.m3u",
+                name = "网页直播源",
+                url = "https://gh-proxy.com/https://raw.githubusercontent.com/0047ol/China-TV-Live-M3U8/refs/heads/main/tv.m3u",
+            ),
+            IptvSource(
+                name = "小飞直播源",
+                url = "http://28918185.xyz:4567/tvbox/iptv.txt",
+            ),
+            IptvSource(
+                name = "融合直播源",
+                url = "https://gh-proxy.com/https://raw.githubusercontent.com/mytv-android/iptv-api/refs/heads/master/output/result.m3u",
             )
         )
     )
@@ -39,7 +47,7 @@ object Constants {
     /**
      * 播放源缓存时间（毫秒）
      */
-    const val IPTV_SOURCE_CACHE_TIME = 1000 * 60 * 60L // 24小时
+    const val IPTV_SOURCE_CACHE_TIME = 0L //1000 * 60 * 60L // 24小时
 
     /**
      * 节目单来源
@@ -47,8 +55,8 @@ object Constants {
     val EPG_SOURCE_LIST = EpgSourceList(
         listOf(
             EpgSource(
-                name = "默认节目单 综合",
-                url = "https://gitee.com/mytv-android/myepg/raw/master/output/epg.gz",
+                name = "默认节目单 fanmingming",
+                url = "http://epg.internetprotocoltelevision.top/epg/t.xml.gz",
             ),
         )
     )
@@ -73,7 +81,7 @@ object Constants {
      * {name|uppercase} 转成大写
      *
      */
-    const val CHANNEL_LOGO_PROVIDER = "https://gitee.com/mytv-android/myTVlogo/raw/main/img/{name|uppercase}.png"
+    const val CHANNEL_LOGO_PROVIDER = "http://logo.internetprotocoltelevision.top/{name|uppercase}.png"
 
     /**
      * GitHub加速代理地址
@@ -84,9 +92,9 @@ object Constants {
      * Git最新版本信息
      */
     val GIT_RELEASE_LATEST_URL = mapOf(
-        "stable" to "https://gitee.com/api/v5/repos/mytv-android/mytvstable/releases/latest",
-        "beta" to "https://gitee.com/api/v5/repos/mytv-android/mytvbeta/releases/latest",
-        "dev" to "https://gitee.com/api/v5/repos/mytv-android/mytvdev/releases/latest",
+        "stable" to "https://giraff.fun/tv/update/mytvstable_update.json",
+        "beta" to "https://giraff.fun/tv/update/mytvbeta_update.json",
+        "dev" to "https://giraff.fun/tv/update/mytvdev_update.json",
     )
 
     /**

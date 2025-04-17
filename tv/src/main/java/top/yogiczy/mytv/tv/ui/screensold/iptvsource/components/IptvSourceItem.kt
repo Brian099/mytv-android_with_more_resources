@@ -106,7 +106,8 @@ fun IptvSourceItem(
                 }
             }
         },
-        supportingContent = { Text(line.url, maxLines = 1, overflow = TextOverflow.Ellipsis) },
+        //supportingContent = { Text(line.url, maxLines = 1, overflow = TextOverflow.Ellipsis) },
+        supportingContent = { Text("点击选择") },
         trailingContent = {
             RadioButton(selected = isSelected, onClick = {})
         },
