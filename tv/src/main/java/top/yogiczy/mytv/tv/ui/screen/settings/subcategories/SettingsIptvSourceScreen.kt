@@ -244,7 +244,8 @@ private fun IptvSourceItem(
             Column(
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                Text(iptvSource.url)
+                //Text(iptvSource.url)
+                Text("刷新查看源详情")
 
                 if (iptvSourceDetail is IptvSourceDetail.Ready) {
                     Text(
