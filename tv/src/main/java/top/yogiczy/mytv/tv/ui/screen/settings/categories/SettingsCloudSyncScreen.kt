@@ -181,7 +181,7 @@ fun SettingsCloudSyncScreen(
                 item {
                     SettingsListItem(
                         headlineContent = "Github Gist Token",
-                        trailingContent = settingsViewModel.cloudSyncGithubGistToken,
+                        trailingContent = "******",
                         remoteConfig = true,
                     )
                 }
@@ -199,7 +199,7 @@ fun SettingsCloudSyncScreen(
                 item {
                     SettingsListItem(
                         headlineContent = "Gitee 代码片段 Token",
-                        trailingContent = settingsViewModel.cloudSyncGiteeGistToken,
+                        trailingContent = "******",
                         remoteConfig = true,
                     )
                 }
@@ -245,7 +245,7 @@ fun SettingsCloudSyncScreen(
                 item {
                     SettingsListItem(
                         headlineContent = "WebDAV 密码",
-                        trailingContent = settingsViewModel.cloudSyncWebDavPassword,
+                        trailingContent = "******",
                         remoteConfig = true,
                     )
                 }
