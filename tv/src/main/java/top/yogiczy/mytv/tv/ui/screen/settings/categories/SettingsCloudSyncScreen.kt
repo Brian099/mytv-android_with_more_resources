@@ -7,21 +7,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CloudDownload
 import androidx.compose.material.icons.outlined.CloudUpload
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.tv.material3.LocalContentColor
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Switch
-import androidx.tv.material3.Text
+import androidx.tv.material3.*
 import kotlinx.coroutines.launch
 import top.yogiczy.mytv.tv.sync.CloudSync
 import top.yogiczy.mytv.tv.sync.CloudSyncData
@@ -179,9 +172,9 @@ fun SettingsCloudSyncScreen(
                 }
 
                 item {
-                    SettingsListItem(
-                        headlineContent = "Github Gist Token",
-                        trailingContent = settingsViewModel.cloudSyncGithubGistToken,
+                    PasswordListItem(
+                        title = "Github Gist Token",
+                        password = settingsViewModel.cloudSyncGithubGistToken,
                         remoteConfig = true,
                     )
                 }
@@ -197,9 +190,9 @@ fun SettingsCloudSyncScreen(
                 }
 
                 item {
-                    SettingsListItem(
-                        headlineContent = "Gitee 代码片段 Token",
-                        trailingContent = settingsViewModel.cloudSyncGiteeGistToken,
+                    PasswordListItem(
+                        title = "Gitee 代码片段 Token",
+                        password = settingsViewModel.cloudSyncGiteeGistToken,
                         remoteConfig = true,
                     )
                 }
@@ -243,15 +236,45 @@ fun SettingsCloudSyncScreen(
                 }
 
                 item {
-                    SettingsListItem(
-                        headlineContent = "WebDAV 密码",
-                        trailingContent = settingsViewModel.cloudSyncWebDavPassword,
+                    PasswordListItem(
+                        title = "WebDAV 密码",
+                        password = settingsViewModel.cloudSyncWebDavPassword,
                         remoteConfig = true,
                     )
                 }
             }
         }
     }
+}
+
+@Composable
+private fun PasswordListItem(
+    title: String,
+    password: String,
+    remoteConfig: Boolean = false,
+) {
+    var showPassword by remember { mutableStateOf(false) }
+    val displayText = if (showPassword) {
+        password
+    } else {
+        "•".repeat(password.length.coerceAtLeast(6))
+    }
+
+    SettingsListItem(
+        headlineContent = title,
+        trailingContent = {
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(displayText)
+                IconButton(onClick = { showPassword = !showPassword }) {
+                    Icon(
+                        imageVector = if (showPassword) Icons.Outlined.VisibilityOff else Icons.Outlined.Visibility,
+                        contentDescription = if (showPassword) "隐藏" else "显示"
+                    )
+                }
+            }
+        },
+        remoteConfig = remoteConfig,
+    )
 }
 
 @Preview(device = "id:Android TV (720p)")
